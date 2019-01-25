@@ -3,26 +3,74 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleClickHello = () => {
+    this.setState({value: 'Hello'});
+  }
+
+  handleClickGoodbye = () => {
+    this.setState({value: 'Goodbye'});
+  }
+
+  handleClickMessage = () => {
+    alert(this.state.value);
+  }
+
+  handleClickUpperCase = () => {
+    this.setState({value: this.state.value.toUpperCase()});
+  }
+
+  handleClickLowerCase = () => {
+    this.setState({value: this.state.value.toLowerCase()});
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div>
+
+        <div>
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        </div>
+
+        <p>
+          <label>
+            <div>Input:</div>
+            <input type="text" size="50" value={this.state.value} onChange={this.handleChange.bind(this)} />
+          </label>
+        </p>
+
+        <p>
+          <button onClick={this.handleClickHello}>Hello</button>
+        </p>
+
+        <p>
+          <button onClick={this.handleClickGoodbye}>Goodbye</button>
+        </p>
+
+        <p>
+          <button disabled={!this.state.value}  onClick={this.handleClickUpperCase}>Upper Case</button>
+        </p>
+
+        <p>
+          <button disabled={!this.state.value}  onClick={this.handleClickLowerCase}>Lower Case</button>
+        </p>
+
+        <p>
+          <button disabled={!this.state.value} onClick={this.handleClickMessage}>Show Input Message</button>
+        </p>
+
       </div>
     );
   }
 }
 
 export default App;
+
