@@ -32,6 +32,10 @@ class App extends Component {
     this.setState({value: this.state.value.toLowerCase()});
   }
 
+  handleClickClear = () => {
+    this.setState({value: ''});
+  }
+
   render() {
     return (
       <div>
@@ -42,7 +46,7 @@ class App extends Component {
 
         <p>
           <label>
-            <div>Input:</div>
+            Input:<br></br>
             <input type="text" size="50" value={this.state.value} onChange={this.handleChange.bind(this)} />
           </label>
         </p>
@@ -65,6 +69,10 @@ class App extends Component {
 
         <p>
           <button disabled={!this.state.value} onClick={this.handleClickMessage}>Show Input Message</button>
+        </p>
+
+        <p>
+          <button disabled={!this.state.value} onClick={this.handleClickClear}>Clear Input Message</button>
         </p>
 
       </div>
